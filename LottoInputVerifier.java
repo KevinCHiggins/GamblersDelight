@@ -47,6 +47,9 @@ public class LottoInputVerifier extends InputVerifier {
 	@Override
 	public boolean shouldYieldFocus(JComponent source, JComponent target) {
 		int thisNumber, otherNumber;
+		//FIX ME - there should be a check whether the target is the quick pick button
+		//because in that case it makes no sense to show an error message as
+		//the field in question is about to be overwritten with quick pick numbers
 
 		JTextField sourceField = (JTextField)source;
 		if (sourceField.getText().length() == 0) return true;	//messy test... let the user navigate away from an empty panel
