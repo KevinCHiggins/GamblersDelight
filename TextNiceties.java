@@ -1,6 +1,7 @@
 /**
 @author Kevin Higgins
 27/12/19
+This is a reusable class providing some logic to correct the grammar of text describing integer variables
 */
 public class TextNiceties {
 	static String[] countingPostfixes = {"st", "nd", "rd", "th"};	//assuming "zeroth" is not a word

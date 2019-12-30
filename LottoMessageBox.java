@@ -1,8 +1,8 @@
 /**
 @author Kevin Higgins
 27/12/19
+This class is a subclass of Swing's JTextArea, with some GUI specifics added
 */
-import javax.swing.JTextField;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.BorderFactory; 

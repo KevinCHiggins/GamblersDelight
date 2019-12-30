@@ -1,6 +1,8 @@
 /**
 @author Kevin Higgins
 27/12/19
+This class takes info on each ticket/game played, stores it in a dynamically resizable array,
+and can display a report about all games
 */
 import javax.swing.*;
 import javax.swing.border.*;

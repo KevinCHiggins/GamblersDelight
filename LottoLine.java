@@ -1,6 +1,19 @@
 /**
 @author Kevin Higgins
 27/12/19
+A class representing a line of lotto numbers which can be filled out. These are JTextfields stored
+in the fields array. A few different objects are constructed or passed on for the various validation
+needs: a DocumentListener keeps an eye on text updates to the fields; the LottoInputValidator
+validates individual fields within, and the entirety of, the line that created it; the FocusListener,
+which is intended to be a LottoTicket containing this line in its array of lines, is necessary
+so the LottoTicket's quick pick button knows what line to fill out. Finally, this class has a
+Vector of LottoLineListeners (overkill, but I wanted to study how to create custom events) 
+which actually will just contain a single LottoLineListener, the parent LottoTicket. What happens is:
+ - a DocumentEvent is picked up by a LottoLine and triggers a call to evaluateState()
+ - if necessary, the line's state is changed - it can be inactive, activated, or committed (ready to play)
+ - a LottoLineEvent is fired to be picked up by the LottoTicket so it can update the play button text etc.
+Finally, there are getter methods to access the numbers in the line, some methods to do with the quick pick
+function, and the GUI building stuff
 */
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +26,7 @@ import java.util.EventObject;
 public class LottoLine implements DocumentListener {
 	protected Vector<LottoLineListener> listeners;
 	private int state;	//0 unactivated (disabled) 1 activated 2 committed (validated). Can go between 1 and 2 but not back to 0
-	private LottoField[] fields;
+	private JTextField[] fields;
 	private LottoInputVerifier validator;
 
 	public LottoLine(int length, LottoRules byTheRules, FocusListener listeningTicket, int index) {	

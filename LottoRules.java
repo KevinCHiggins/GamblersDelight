@@ -1,6 +1,11 @@
 /**
 @author Kevin Higgins
 27/12/19
+This class uses some defaults to set up variables determining the numeric bounds of the 
+lotto game. It also can generate ("draw") 6 random unique lotto numbers (within the
+appropriate bounds.) This function is intended to be called by LottoTicket to play the lotto, and
+also by LottoTicket for the quick pick button.
+Random numbers and game variables are all made accessible with getters.
 */
 import java.util.*;
 //TO DO

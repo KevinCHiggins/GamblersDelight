@@ -1,6 +1,11 @@
 /**
 @author Kevin Higgins
 27/12/19
+This class contains much of the interactions for the lotto game. It processes changes of line state
+and manages the quick pick functionality (including changes in focus). It contains the LottoLines
+in a private array. It builds most of the game interface by 
+creating objects and painting them onto a Container. It generates the feedback after each
+round is played. It is intended to be used as a new object ("lotto ticket") for each round.
 */
 import javax.swing.*;
 import java.awt.*;
@@ -13,22 +18,22 @@ import java.text.*;
 public class LottoTicket extends FocusAdapter implements LottoLineListener {
 	final int SMALL_INSET = 10;
 	final int BIG_INSET = 30;
-	NumberFormat twoDecimalDigits;
-	LottoRules byTheRules;
-	LottoLine[] lines;
-	int [][] results;
-	int lineLength;
-	int linesTally;	
-	int amountOfLines;
- 	JButton pickButton;
- 	JButton playButton;
-	JButton stopButton;
-	JPanel linesPanel;
-	JPanel buttonsPanel;
-	int focusedLineIndex;
-	int countOfLinesCommitted;
-	String report = "";
-	JTextArea textBox;
+	private NumberFormat twoDecimalDigits;
+	private LottoRules byTheRules;
+	private LottoLine[] lines;
+	private int [][] results;
+	private int lineLength;
+	private int linesTally;	
+	private int amountOfLines;
+ 	private JButton pickButton;
+ 	private JButton playButton;
+	private JButton stopButton;
+	//private JPanel linesPanel;
+	//private JPanel buttonsPanel;
+	private int focusedLineIndex;
+	private int countOfLinesCommitted;
+	private String report = "";
+	private JTextArea textBox;
 
 	public LottoTicket(ActionListener listeningTicket, LottoRules byTheRules) {	//this constructor needs safeguards against dodgy parameters
 		pickButton = new JButton("Pick for me");
